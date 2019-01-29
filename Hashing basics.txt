@@ -1,0 +1,38 @@
+Hashing
+
+Hashing converts key to any smaller interger and this integer is used as an index to access the elements
+
+Hash Function: Function that converts the key to the smaller integer
+A good hash function should have following properties
+1) Efficiently computable.
+2) Should uniformly distribute the keys (Each table position equally likely for each key)
+
+Hash Table: An array that stores pointers to records corresponding to a given phone number. An entry in hash table is NIL if no existing phone number has hash function value equal to the index for the entry.
+
+Collision handling:   Reference--https://www.geeksforgeeks.org/hashing-set-2-separate-chaining/
+The hash function may return same integer for more than one keys and hence there arise a situation where two keys result in collision.To handle this,
+
+Chaining-
+       Ex (Hash function--%10)
+       1-101-111-121
+       2-102
+       3-103-113
+       Additional memory outside the table
+
+Open addressing:      Reference--https://www.geeksforgeeks.org/hashing-set-3-open-addressing/
+       All entries are saved in original table itself
+       Searching of element is done by sequential accessing until the element is found
+       Needs extra care for collision handling
+       i)Linear Probing- when the slot for the element is filled, the element is placed in the next 	                  available slot (no matter where it should be based on generated hash key)
+       ii)Quadratic Probing - When the slot is filled, for the ith iteration we look for i^2 slot
+		Ex: 1st iteration
+			 if slot is full we look for hash key + 1*1 th slot = 
+		    2nd iteration
+			  if hash key + 1*1 th slot is full we look for hash key + 2*2 th slot 
+       iii) Double Hashing - We use another hash function hash2(x) and look for i*hash2(x) slot in 			    i’th iteration
+
+
+       Comparison
+	Linear probing   - Best cache performance , easy to compute but poor clustering
+	Quadratic probing- Between Linear and Double Hashing in Clustering and Caching
+	Double hashing   - Poor cache performance , more computation time(since two hash functions are to be computed), no clustering
